@@ -1,0 +1,97 @@
+<!-- <section class="vh-1000 bg-image" style="background-image: url('https://img.freepik.com/free-photo/abstract-blur-hospital-clinic-interior_1203-7890.jpg?w=2000');"> -->
+  <div class="banner">
+
+    <h1 >Life Spring Hospital</h1>
+        <div class="row">
+          <div class="col-md-5">
+            <form autocomplete="off" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+              <table text="center" width="205%" cellpadding="30" cellspacing="0">
+              <tr>
+           <td>
+                <!-- name  -->
+        <div class="mb-2">
+          <label>Patient Name</label>
+          <input type="text" name="name" class="form-control"
+        [(ngModel)]="patientsService.patientData.name" #name="ngModel" autocomplete="off"
+        required minlength="3" pattern="^[a-zA-Z ]{1,30}$"
+        [class.is-invalid]="name.touched && name.invalid" placeholder="Enter your Name">
+      </div>
+      <!--Validation-->
+      <div *ngIf="myForm.submitted || name.touched && name.invalid">
+        <div class="text-danger" *ngIf="name.errors?.['required']">
+         Name is mandatory</div>
+         <div class="text-danger" *ngIf="name.errors?.['minlength']">
+          Name should be minimum 3 characters</div>
+          <div class="text-danger" *ngIf="name.errors?.['pattern']">
+            Name should be alphabet</div>
+         </div>
+
+      </td>
+
+
+    <td>
+     <!-- age -->
+     <div class="mb-2">
+      <label>Patient Age</label>
+      <input type="text" name="age" class="form-control" [(ngModel)]="patientsService.patientData.age"
+        #age="ngModel" required [class.is-invalid]="age.invalid && age.touched" placeholder="Enter your Age">
+    </div>
+      <!-- validation  -->
+      <div *ngIf="myForm.submitted || age.touched && age.invalid">
+        <div class="text-danger" *ngIf="age.errors?.['required']">
+         Age is mandatory</div>
+        </div>
+        </td>
+        </tr>
+        <tr>
+        <td>
+         <!-- address  -->
+        <div class="mb-2">
+          <label>Patient Address</label>
+          <input type="text" name="address" class="form-control"
+            [(ngModel)]="patientsService.patientData.address" #address="ngModel" required
+            [class.is-invalid]="address.invalid && address.touched" placeholder="Enter your Address">
+        </div>
+        <!-- validation  -->
+        <div *ngIf="myForm.submitted || age.touched && age.invalid">
+          <div class="text-danger" *ngIf="age.errors?.['required']">
+           Address is mandatory</div>
+          </div>
+    </td>
+
+
+    <td>
+     <!-- email -->
+     <div class="mb-2">
+      <label>Patient Email ID</label>
+      <input type="email" class="form-control" name="emailId"
+    [(ngModel)]="patientsService.patientData.emailId" #emailId="ngModel"
+    autocomplete="off" required  pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+    [class.is-invalid]="emailId.touched && emailId.invalid" placeholder="Enter your email address">
+  </div>
+  <!--Validation-->
+  <div *ngIf="myForm.submitted || emailId.touched && emailId.invalid">
+    <div class="text-danger" *ngIf="emailId.errors?.['required']">
+    Email ID is Mandatory</div>
+    <div class="text-danger" *ngIf="emailId.errors?.['pattern']">
+      Email ID is incorrect</div>
+    </div>
+    </td>
+
+
+  </tr>
+  <tr>
+    <td>
+  <div class="mb-2">
+    <button  type="submit" [disabled]="!myForm.valid" class="btn btn-dark" onclick="alert('Successfully added your details.You will shortly receive an email.')">Submit</button>
+
+    <button type="reset" class="btn btn-danger mx-2">Reset</button>
+  </div>
+    </td>
+  </tr>
+  </table>
+      </form>
+    </div>
+  </div>
+  </div>
+  <!-- </section> -->
